@@ -1,0 +1,29 @@
+﻿@using CodingChallenge.Core.Dto.Response;
+
+@model List<CatsByOwnerGenderResponseData>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Cats grouped by owner gender</h1>
+</div>
+@if (ViewBag.Error != null)
+{
+    <div>Just for this demo errors are here</div>
+    <p class="alert-danger">Error: @ViewBag.Error</p>
+}
+
+@if (Model != null)
+{
+    foreach (var gender in Model)
+    {
+        <p>Cats by @gender.Gender Owners</p>
+        <ul>
+            @foreach (var cat in gender.CatNames)
+            {
+                <li>@cat</li>
+            }
+        </ul>
+    }
+}
